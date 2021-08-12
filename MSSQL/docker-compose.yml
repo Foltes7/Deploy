@@ -1,0 +1,19 @@
+version: "3"
+services:
+    db:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        environment:
+            SA_PASSWORD: "yourStrong(!)Password"
+            ACCEPT_EULA: "Y"
+        ports:
+          - "1433:1433"
+        volumes: 
+          - sqlsystem:/var/opt/mssql/
+          - sqldata:/var/opt/sqlserver/data
+          - sqllog:/var/opt/sqlserver/log
+          - sqlbackup:/var/opt/sqlserver/backup
+volumes:
+  sqlsystem:
+  sqldata:
+  sqllog:
+  sqlbackup:
