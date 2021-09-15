@@ -1,0 +1,14 @@
+version: "2.4"
+services:
+  backend:
+    container_name: proj-server
+    image: davydq/proj-server
+  nginx:
+    container_name: proj-static
+    image: davydq/proj-static
+    links:
+      - backend
+    depends_on:
+      - "backend"
+    ports:
+      - "8020:80"
