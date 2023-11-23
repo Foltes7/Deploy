@@ -1,0 +1,7 @@
+docker-compose --env-file env.txt up -d
+
+docker run -p 8080:8080 --name elasticvue -d cars10/elasticvue
+
+docker run --name es01 -e "http.cors.enabled=true" -e "http.cors.allow-origin=http://localhost:8080" --net elastic -p 9200:9200 -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:8.10.4
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
